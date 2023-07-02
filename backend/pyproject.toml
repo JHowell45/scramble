@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "scramble-backend"
+version = "0.1.0"
+description = "The backend for the Scramble board game app."
+authors = ["Jacob"]
+readme = "README.md"
+packages = [{include = "scramble_backend"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.2"
+pillow = "^10.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+ruff = "^0.0.275"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
