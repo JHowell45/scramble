@@ -4,6 +4,11 @@ from django.db import models
 
 # Create your models here.
 class Character(models.Model):
+    class StatChoices(models.IntegerChoices):
+        STRONG = 4
+        AVERAGE = 3
+        WEAK = 1
+
     name = models.CharField(max_length=100)
     description = models.TextField()
     avatar = models.ImageField(
@@ -11,11 +16,13 @@ class Character(models.Model):
         default="characters/avatars/default.jpg",
     )
     strength = models.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(4)]
+        choices=StatChoices.choices,
     )
-    magic = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(4)])
+    magic = models.IntegerField(
+        choices=StatChoices.choices,
+    )
     dexterity = models.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(4)]
+        choices=StatChoices.choices,
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
