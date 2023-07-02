@@ -1,3 +1,5 @@
 /mediafiles/
 
 *.pyc
+
+*.sqlite3
