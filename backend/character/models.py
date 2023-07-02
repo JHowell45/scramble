@@ -1,5 +1,6 @@
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.conf import settings
 from django.db import models
+from django.utils.safestring import mark_safe
 
 
 # Create your models here.
@@ -26,6 +27,12 @@ class Character(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def avatar_tag(self):
+        """Loads the actual image into a HTML tag with the image URL."""
+        return mark_safe(
+            f'<img src="{settings.MEDIA_URL}{self.avatar}" width="150" height="150" />'
+        )
 
 
 class Player(models.Model):
