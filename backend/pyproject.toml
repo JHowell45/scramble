@@ -10,6 +10,8 @@ packages = [{include = "scramble_backend"}]
 python = "^3.11"
 django = "^4.2.2"
 pillow = "^10.0.0"
+django-extensions = "^3.2.3"
+ptpython = "^3.0.23"
 
 
 [tool.poetry.group.dev.dependencies]
