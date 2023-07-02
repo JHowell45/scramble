@@ -7,4 +7,4 @@ from .models import Character, Player
 
 @admin.register(Character)
 class CharacterAdmin(admin.ModelAdmin):
-    pass
+    date_hierarchy = "created_at"
