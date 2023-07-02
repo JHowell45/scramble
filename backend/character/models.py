@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
@@ -9,9 +10,13 @@ class Character(models.Model):
         upload_to="characters/avatars/%Y/%m/%d/",
         default="characters/avatars/default.jpg",
     )
-    strength = models.IntegerField()
-    magic = models.IntegerField()
-    dexterity = models.IntegerField()
+    strength = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(4)]
+    )
+    magic = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(4)])
+    dexterity = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(4)]
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
